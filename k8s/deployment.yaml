@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-openshift
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-openshift
+  template:
+    metadata:
+      labels:
+        app: fastapi-openshift
+    spec:
+      containers:
+      - name: exampleforyou
+        image: default-route-openshift-image-registry.apps-crc.testing/example-deployment/exampleforyou:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENV_SECRET
+          value: HelloWorld
+

@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: fastapi-openshift-svc
+  namespace: example-deployment
+spec:
+  host: fastapi-openshift-svc-example-deployment.apps-crc.testing
+  port:
+    targetPort: 8000
+  to:
+    kind: Service
+    name: fastapi-openshift-svc
+    weight: 100
+  wildcardPolicy: None

@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-openshift-svc
+  namespace: example-deployment
+spec:
+  clusterIP: 10.217.4.172
+  clusterIPs:
+  - 10.217.4.172
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: fastapi-openshift
+  sessionAffinity: None
+  type: ClusterIP
+
